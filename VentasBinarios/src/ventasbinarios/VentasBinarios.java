@@ -15,7 +15,7 @@ public class VentasBinarios {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ioDatos.Archivo.leer();
+        ioDatos.Archivo.leerFichero();
     }
     
 }
