@@ -27,12 +27,12 @@ public class Archivo {
     private static String linea;
 
   
-    public static void leer(){
+    public static void leerFichero(){
         
         File f = new File("ventas.dat");
         FileInputStream fi = null;
         DataInputStream salida = null;
-        Scanner leer=null;
+       
         
         if (!f.exists()) {
             try {
@@ -45,27 +45,21 @@ public class Archivo {
         try {
             fi = new FileInputStream(f);
             salida = new DataInputStream(fi);
-             leer = new Scanner(salida);
+          while(true){
+            Ventas v = new Ventas(salida.readUTF(), salida.readInt(), salida.readInt(), salida.readDouble());
+          }
         } catch (FileNotFoundException ex) {
             System.out.println("Error al leer el archivo");
-        }
-      while(leer.hasNext()){
-            try { 
-                linea=salida.readUTF();
-                System.out.println(linea);
-                
+        } catch (IOException ex) {
+            System.out.println("Error de lectura de fichero");
+        }finally{
+            try {
+                salida.close();
             } catch (IOException ex) {
-                System.out.println("Error al leer");
-            }finally{
-                try {
-                    fi.close();
-                } catch (IOException ex) {
-                    System.out.println("Error al cerrar el archivo");
-                }
+                System.out.println("Error al cerrar el programa");
             }
-        
-        
         }
+ 
     }
     
     

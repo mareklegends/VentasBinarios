@@ -10,8 +10,17 @@ package ioDatos;
  * @author alumno
  */
 public class Ventas {
-    private String cliente = "";
-    private int producto = 0;
-    private int cantidad = 0;
-    private double precioUnitario = 0;    
+    private String cliente;
+    private int producto;
+    private int cantidad;
+    private double precioUnitario;   
+
+    public Ventas(String cliente, int producto, int cantidad, double precioUnitario) {
+        this.cliente = cliente;
+        this.producto = producto;
+        this.cantidad = cantidad;
+        this.precioUnitario = precioUnitario;
+    }
+   
+   
 }
