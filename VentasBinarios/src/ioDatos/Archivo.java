@@ -16,10 +16,11 @@ import javax.imageio.stream.FileImageInputStream;
  */
 public class Archivo {
     
-    File f = new File("ventas.dat");
+    
+    File fichero = new File("ventas.dat");
     FileImageInputStream fi=null;
     DataInputStream di = null;
     
-
+    
     
 }
