@@ -84,13 +84,26 @@ public class Archivo {
                 fi = new FileOutputStream(f);
                 entrada = new DataOutputStream(fi);
               
-                    vVentas.add(v);
-                
-               
+                    for (int i = 0; i < vVentas.size(); i++) {
+                        entrada.writeBytes(v.getCliente());
+                        entrada.writeInt(v.getProducto());
+                        entrada.writeInt(v.getCantidad());
+                        entrada.writeDouble(v.getPrecioUnitario());
+                    }
+              
                 
             } catch (FileNotFoundException ex) {
                 System.out.println("Error al escribir en el archivo");
+            } catch (IOException ex) {
+                System.out.println("Error al añadir los datos");
+            }finally{
+                try{
+                    entrada.close();
+                } catch (IOException ex) {
+                    System.out.println("Error al cerrar el archivo");
+                }
             }
+              
             
         }
     }
