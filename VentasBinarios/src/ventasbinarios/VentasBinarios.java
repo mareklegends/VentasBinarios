@@ -6,6 +6,7 @@
 package ventasbinarios;
 
 import ioDatos.Ventas;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -53,9 +54,17 @@ public class VentasBinarios {
                      Scanner leer = new Scanner(System.in);
                      String clientebuscar = "";
                      clientebuscar = leer.nextLine();
-                    
-                     ioDatos.Archivo.buscarCliente(clientebuscar);
+                                      
                      
+                   
+                     for (int i = 0; i < vVentasNuevas.size(); i++) {
+                        if (vVentasNuevas.get(i).getCliente().equalsIgnoreCase(clientebuscar)) {
+                            System.out.println(""+vVentasNuevas.get(i).getCliente()+""+vVentasNuevas.get(i).getProducto()+""+vVentasNuevas.get(i).getCantidad()+""+vVentasNuevas.get(i).getPrecioUnitario()+"");
+                        }
+                    }
+                    
+                    
+                    
                     break;
                     
                 case 3:
@@ -71,6 +80,9 @@ public class VentasBinarios {
                     
                 case 4:
                     System.out.println("Clonando el fichero");
+                    
+                   ioDatos.Archivo.clonarArchivo(new File("ventas.dat"));
+                   
                     
                     break;
                 case 5:

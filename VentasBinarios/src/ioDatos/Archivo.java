@@ -107,47 +107,45 @@ public class Archivo {
         }
     }
     
-    //buscar cliente
     
-    public static void buscarCliente(String buscado){
-        
-        
-        File f = new File("ventas.dat");
-        FileInputStream fi = null;
-        DataInputStream salida = null;
-        ArrayList<Ventas> vVentas = new ArrayList();
-       
-        
-        if (!f.exists()) {
-            try {
-                f.createNewFile();
-            } catch (IOException ex) {
-                System.out.println("Error al crear el archivo");
-            }
-        }
-        
-        try {
-            fi = new FileInputStream(f);
-            salida = new DataInputStream(fi);
-          while(true){
-              if (salida.equals(buscado)) {
-                  System.out.println("Nombre "+salida.readUTF()+" "+salida.readInt()+""+salida.readInt()+""+salida.readDouble()+"");
-              }
-           
-            
+    public static void clonarArchivo(File fclone){
+ArrayList<Ventas> vVentas2 = new ArrayList<>();
+    File f=new File("datosCopia.dat");
+    FileInputStream fi=null;
+    DataInputStream leer=null;
+    FileOutputStream fo=null;
+    DataOutputStream escribir=null;
+    //comprobamos si existe el archivo
+    if(!f.exists()){
+          try {
+              f.createNewFile();
+          } catch (IOException ex) {
+              System.out.println("Fallo al comprobar el archivo");
           }
-        } catch (FileNotFoundException ex) {
-            System.out.println("Error al leer el archivo");
-        } catch (IOException ex) {
-            System.out.println("");
-            //System.out.println("Fin de lectura");
-        }finally{
-            try {
-                salida.close();
-            } catch (IOException ex) {
-                System.out.println("Error al cerrar el programa");
-            }
-        }
-        
     }
+    
+      try {
+          fi = new FileInputStream(fclone);
+          leer = new DataInputStream(fi);
+          fo = new FileOutputStream(f);
+          escribir = new DataOutputStream(fo);
+          
+          while (true){
+              escribir.writeUTF(leer.readUTF());
+              escribir.writeInt(leer.readInt());
+              escribir.writeInt(leer.readInt());
+              escribir.writeDouble(leer.readDouble());
+              
+          }
+      } catch (FileNotFoundException ex) {
+          System.out.println("Fichero no encontrado");;
+      } catch (IOException ex) {
+          System.out.println("Fin de copiado");;
+      }
+    
+    
+  
+
+}    
+    
 }

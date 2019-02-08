@@ -16,7 +16,7 @@ public class Menu {
             int opc=7;
             
             Scanner leer = new Scanner(System.in);
-            while((opc<1) || (opc<4)){
+            while((opc<1) || (opc>4)){
                try{              
            
             System.out.println("-----Menu-----");
