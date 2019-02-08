@@ -15,23 +15,25 @@ public class Menu {
     public static int mostrarMenu(){
             int opc=7;
             
-            
-            while(opc<1 && opc<4){
+            Scanner leer = new Scanner(System.in);
+            while((opc<1) || (opc<4)){
                try{              
            
             System.out.println("-----Menu-----");
-            System.out.println("1. Mostrar el valor de las facturas de un cliente.");
-            System.out.println("2. Mostrar cantidad de clientes.");
-            System.out.println("3. ");
-            System.out.println("4. Salir");
+                   System.out.println("añadir ventas");
+                   System.out.println("mostrar ventas de un cliente");
+                   System.out.println("cantidad de clientes");
+                   System.out.println("Clonar el archivo");
+                   System.out.println("salir");
             System.out.println("--------------");
             
-            Scanner leer = new Scanner(System.in);
+            
             
             opc=leer.nextInt();
             
              }catch(Exception e){
                  System.out.println("Opción valida, elija otra");
+                 break;
              }  
             }
            

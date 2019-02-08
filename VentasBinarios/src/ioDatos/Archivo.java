@@ -23,7 +23,7 @@ public class Archivo {
 
     private static String linea;
 
-  
+  //Inicializar - leer el fichero
     public static ArrayList<Ventas> leerFichero(){
         
         File f = new File("ventas.dat");
@@ -61,15 +61,13 @@ public class Archivo {
         return vVentas;
  
     }
+    //escribir en el fichero
     
-    
-    public static void añadirVentas(Ventas v) {
+    public static void añadirVentas(ArrayList<Ventas> vVentas) {
         File f = new File("ventas.dat");
         FileOutputStream fi = null;
         DataOutputStream entrada = null;
-        ArrayList<Ventas> vVentas = new ArrayList();
-        
-       vVentas.add(v);
+
         
         if (!f.exists()) {
             try {
@@ -85,10 +83,10 @@ public class Archivo {
                 entrada = new DataOutputStream(fi);
               
                     for (int i = 0; i < vVentas.size(); i++) {
-                        entrada.writeBytes(v.getCliente());
-                        entrada.writeInt(v.getProducto());
-                        entrada.writeInt(v.getCantidad());
-                        entrada.writeDouble(v.getPrecioUnitario());
+                        entrada.writeUTF(vVentas.get(i).getCliente());
+                        entrada.writeInt(vVentas.get(i).getProducto());
+                        entrada.writeInt(vVentas.get(i).getCantidad());
+                        entrada.writeDouble(vVentas.get(i).getPrecioUnitario());
                     }
               
                 
@@ -108,5 +106,46 @@ public class Archivo {
         }
     }
     
+    //buscar cliente
     
+    public static void buscarCliente(String buscado){
+        
+        
+        File f = new File("ventas.dat");
+        FileInputStream fi = null;
+        DataInputStream salida = null;
+        ArrayList<Ventas> vVentas = new ArrayList();
+       
+        
+        if (!f.exists()) {
+            try {
+                f.createNewFile();
+            } catch (IOException ex) {
+                System.out.println("Error al crear el archivo");
+            }
+        }
+        
+        try {
+            fi = new FileInputStream(f);
+            salida = new DataInputStream(fi);
+          while(true){
+              if (salida.equals(buscado)) {
+                  System.out.println("Nombre "+salida.readUTF()+" "+salida.readInt()+""+salida.readInt()+""+salida.readDouble()+"");
+              }
+           
+            
+          }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Error al leer el archivo");
+        } catch (IOException ex) {
+            System.out.println("Fin de lectura");
+        }finally{
+            try {
+                salida.close();
+            } catch (IOException ex) {
+                System.out.println("Error al cerrar el programa");
+            }
+        }
+        
+    }
 }
