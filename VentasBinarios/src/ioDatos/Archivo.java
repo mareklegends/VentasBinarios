@@ -50,7 +50,8 @@ public class Archivo {
         } catch (FileNotFoundException ex) {
             System.out.println("Error al leer el archivo");
         } catch (IOException ex) {
-            System.out.println("Fin de lectura");
+            System.out.println("");
+            //System.out.println("Fin de lectura");
         }finally{
             try {
                 salida.close();
@@ -138,7 +139,8 @@ public class Archivo {
         } catch (FileNotFoundException ex) {
             System.out.println("Error al leer el archivo");
         } catch (IOException ex) {
-            System.out.println("Fin de lectura");
+            System.out.println("");
+            //System.out.println("Fin de lectura");
         }finally{
             try {
                 salida.close();
