@@ -13,15 +13,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.stream.FileImageInputStream;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
  *
- * @author alumno
+ * @author MarekLegends
  */
 public class Archivo {
 
@@ -67,12 +63,13 @@ public class Archivo {
     }
     
     
-    public static void añadirVentas(){
+    public static void añadirVentas(Ventas v) {
         File f = new File("ventas.dat");
-        FileInputStream fi = null;
-        DataInputStream salida = null;
+        FileOutputStream fi = null;
+        DataOutputStream entrada = null;
         ArrayList<Ventas> vVentas = new ArrayList();
-       
+        
+       vVentas.add(v);
         
         if (!f.exists()) {
             try {
@@ -80,7 +77,22 @@ public class Archivo {
             } catch (IOException ex) {
                 System.out.println("Error al crear el archivo");
             }
-        } 
+        }
+        
+        if (f.exists()) {
+            try {
+                fi = new FileOutputStream(f);
+                entrada = new DataOutputStream(fi);
+              
+                    vVentas.add(v);
+                
+               
+                
+            } catch (FileNotFoundException ex) {
+                System.out.println("Error al escribir en el archivo");
+            }
+            
+        }
     }
     
     

@@ -5,9 +5,11 @@
  */
 package ventasbinarios;
 
+import ioDatos.Ventas;
+
 /**
  *
- * @author alumno
+ * @author MarekLegends
  */
 public class VentasBinarios {
 
@@ -16,6 +18,12 @@ public class VentasBinarios {
      */
     public static void main(String[] args) {
         ioDatos.Archivo.leerFichero();
+        
+        Ventas v = new Ventas("Marcos", 23, 6, 4);
+        
+        ioDatos.Archivo.añadirVentas(v);
+        
+          ioDatos.Archivo.leerFichero();
     }
     
 }

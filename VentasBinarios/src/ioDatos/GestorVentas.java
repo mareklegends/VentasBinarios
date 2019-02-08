@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author alumno
+ * @author MarekLegends
  */
 public class GestorVentas {
     private ArrayList<Ventas> vVentas;
