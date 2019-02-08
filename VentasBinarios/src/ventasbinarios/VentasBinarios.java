@@ -66,7 +66,7 @@ public class VentasBinarios {
                             vclientes.add(vmostrar.getCliente());
                         }
                     }
-                    System.out.println("Hay "+ vclientes.size());
+                    System.out.println("Hay "+ vclientes.size()+"");
                     break;
                     
                 case 4:
